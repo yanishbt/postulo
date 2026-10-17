@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../ui/common.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>Postulo</h1>
+    <span id="count" class="pill"></span>
+  </header>
+
+  <div id="duplicate" class="notice" hidden>Déjà enregistrée le <strong id="dup-date"></strong>.</div>
+
+  <form id="form">
+    <label>Intitulé du poste<input name="title" required /></label>
+    <label>Entreprise<input name="company" /></label>
+    <div class="row">
+      <label>Localisation<input name="location" /></label>
+      <label>Contrat<input name="contractType" list="contracts" /></label>
+    </div>
+    <div class="row">
+      <label>Date de candidature<input name="appliedAt" type="date" required /></label>
+      <label>Statut<select name="status" id="status"></select></label>
+    </div>
+    <label>Salaire<input name="salary" /></label>
+    <label>Notes<textarea name="notes" rows="2" placeholder="Contact, relance prévue…"></textarea></label>
+    <input name="url" type="hidden" />
+    <input name="source" type="hidden" />
+    <button type="submit" class="primary" id="save">Enregistrer la candidature</button>
+  </form>
+
+  <datalist id="contracts">
+    <option>Alternance</option><option>Stage</option><option>CDI</option><option>CDD</option>
+    <option>Intérim</option><option>Freelance</option><option>VIE</option>
+  </datalist>
+
+  <div class="actions">
+    <button id="open-dashboard">Tableau de bord</button>
+    <button id="export">Exporter Excel</button>
+  </div>
+
+  <footer>
+    <label class="inline">Détection des clics « Postuler »
+      <select id="mode">
+        <option value="auto">Automatique</option>
+        <option value="ask">Demander</option>
+        <option value="off">Désactivée</option>
+      </select>
+    </label>
+  </footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

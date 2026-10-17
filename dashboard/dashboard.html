@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mes candidatures · Postulo</title>
+  <link rel="stylesheet" href="../ui/common.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <header>
+    <h1>Mes candidatures</h1>
+    <div class="toolbar">
+      <button id="export" class="primary">Exporter en Excel</button>
+      <button id="backup">Sauvegarde JSON</button>
+      <label class="file-btn">Importer<input id="import" type="file" accept="application/json,.json" hidden /></label>
+    </div>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <section class="filters">
+    <input id="search" type="search" placeholder="Rechercher un poste, une entreprise, une ville…" />
+    <select id="filter-status"><option value="">Tous les statuts</option></select>
+  </section>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-sort="appliedAt">Date</th>
+          <th data-sort="title">Poste</th>
+          <th data-sort="company">Entreprise</th>
+          <th data-sort="location">Lieu</th>
+          <th data-sort="contractType">Contrat</th>
+          <th data-sort="status">Statut</th>
+          <th>Notes</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p id="empty" class="empty" hidden>
+      Aucune candidature pour l'instant. Clique sur « Postuler » sur LinkedIn, Indeed, Welcome to the Jungle…
+      ou utilise le bouton de l'extension pour en ajouter une.
+    </p>
+  </div>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>

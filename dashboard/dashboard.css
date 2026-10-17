@@ -1,0 +1,53 @@
+body { padding: 24px 32px; max-width: 1400px; margin: 0 auto; }
+header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+h1 { margin: 0; font-size: 22px; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+.file-btn { padding: 7px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-soft); cursor: pointer; }
+.file-btn:hover { border-color: var(--muted); }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.stat { background: var(--bg-soft); border-radius: 10px; padding: 12px 14px; }
+.stat b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 12px; }
+
+.filters { display: flex; gap: 8px; margin-bottom: 12px; }
+.filters input { flex: 1; }
+.filters select { width: 200px; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 0; }
+th { background: var(--bg-soft); font-size: 12px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); white-space: nowrap; }
+th[data-sort] { cursor: pointer; user-select: none; }
+th.asc::after { content: ' ▲'; }
+th.desc::after { content: ' ▼'; }
+td.date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+td .sub { color: var(--muted); font-size: 12px; }
+td a { color: var(--accent); text-decoration: none; }
+td a:hover { text-decoration: underline; }
+
+/* Champs éditables discrets dans le tableau */
+td [contenteditable] { min-width: 60px; padding: 2px 4px; border-radius: 4px; outline: none; }
+td [contenteditable]:hover { background: var(--bg-soft); }
+td [contenteditable]:focus { outline: 2px solid var(--accent); }
+td [contenteditable]:empty::before { content: attr(data-placeholder); color: var(--muted); }
+td.notes [contenteditable] { min-width: 180px; white-space: pre-wrap; }
+
+select.status { width: auto; padding: 3px 6px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 0; }
+select.status[data-s="Postulé"] { background: #dbeafe; color: #1e40af; }
+select.status[data-s="Relancé"] { background: #e0e7ff; color: #3730a3; }
+select.status[data-s="Entretien"], select.status[data-s="Test technique"] { background: #fef3c7; color: #92400e; }
+select.status[data-s="Offre reçue"] { background: #d1fae5; color: #065f46; }
+select.status[data-s="Refusé"] { background: #fee2e2; color: #991b1b; }
+select.status[data-s="Abandonné"] { background: #e5e7eb; color: #374151; }
+
+button.icon { border: 0; background: none; color: var(--muted); padding: 4px 6px; }
+button.icon:hover { color: var(--danger); }
+.empty { text-align: center; color: var(--muted); padding: 40px 20px; margin: 0; }
+
+@media (max-width: 700px) {
+  body { padding: 16px; }
+  .filters { flex-direction: column; }
+  .filters select { width: 100%; }
+}
